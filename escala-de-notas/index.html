@@ -1,0 +1,139 @@
+
+
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8" />
+        <title>Diego Muñoz | </title>
+        
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+
+        
+    <link href="/site_media/static/pinax/css/theme.css" rel="stylesheet">
+    <link href="/site_media/static/css/site.css" rel="stylesheet">
+    
+    <style type="text/css">
+        input {
+            text-align:right;
+        }
+    </style>
+
+
+
+        
+            <!-- HTML5 shim, for IE6-8 support of HTML elements -->
+            <!--[if lt IE 9]>
+                <script src="/site_media/static/pinax/js/html5shiv.js"></script>
+            <![endif]-->
+        
+
+        
+    
+
+    </head>
+    <body class="home" id="">
+        <div class="">
+
+            
+
+            
+<div class="row">
+    <div align="center"><h1>Escala de notas</h1></div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+        <table class="table">
+            <tr>
+                <td align="center"><span>Nota minima</span></td>
+                <td align="center"><span>Nota maxima</span></td>
+                <td align="center"><span>Total de puntos</span></td>
+                <td align="center"><span>Nota limite</span></td>
+                <td align="center"><span>Porcentaje de nota limite</span></td>
+                <td align="center"><span>Redondear puntaje de nota 4 para abajo</span></td>
+            </tr>
+            <tr>
+                <td align="center">
+                    <input type="number" step="0.1" data-bind="value: notaMinima"/>
+                </td>
+                <td align="center">
+                    <input type="number" step="any" data-bind="value: notaMaxima"/>
+                </td>
+                <td align="center">
+                    <input type="number" step="any" data-bind="value: totalPuntos"/>
+                </td>
+                <td align="center">
+                    <input type="number" step="0.1" data-bind="value: notaLimite"/>
+                </td>
+                <td align="center">
+                    <input type="number" step="any" data-bind="value: porcentaje"/>
+                </td>
+                <td align="center">
+                    <input type="checkbox" data-bind="checked: redondear4ParaAbajo"/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="col-md-1"></div>
+</div>
+
+<div class="row">
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-6">
+        <table class="table table-condensed">
+            <tr>
+                <td align="center">Puntaje</td>
+                <td align="center">Nota</td>
+            </tr>
+            <tr data-bind="repeat: { count: 2*totalPuntos()+1}">
+                <td align="center"><span data-bind="text: $index/2" /></td>
+                <td align="center"><span data-bind="text: calcularNota($index)" /></td>
+            </tr>
+        </table>
+    </div>
+    <div class="col-md-3">
+    </div>
+</div>
+
+
+
+
+
+            
+                <hr />
+                <footer>
+                    <div class="container">
+                        
+    Creado por Diego Muñoz
+
+
+                    </div>
+                </footer>
+            
+        </div>
+
+        
+    <script src="/site_media/static/jquery/js/jquery-2.1.1.min.js"></script>
+    <script src="/site_media/static/js/lib/bootstrap.min.js"></script>
+    <script src="/site_media/static/js/lib/knockout-3.1.0.js"></script>
+    <script src="/site_media/static/pinax/js/theme.js"></script>
+    
+    <script src="/site_media/static/js/lib/knockout-repeat.js"></script>
+    <script src="/site_media/static/js/src/viewModel.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            ko.applyBindings(vm);
+        });
+    </script>
+
+
+
+        
+    
+
+    </body>
+</html>
