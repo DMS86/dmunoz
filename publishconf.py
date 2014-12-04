@@ -18,7 +18,16 @@ CATEGORY_FEED_ATOM = 'feeds/%s.atom.xml'
 
 DELETE_OUTPUT_DIRECTORY = True
 
+PAGE_PATHS = ['./pages']
+
 # Following items are often useful when publishing
 
 #DISQUS_SITENAME = ""
 #GOOGLE_ANALYTICS = ""
+
+CUSTOM_ARTICLE_URLS = {
+    'random': {'URL': '{category}/{slug}/',
+        'SAVE_AS': '{category}/{slug}/index.html}'},
+    'es': {'URL': '{category}/{slug}/',
+        'SAVE_AS': '{category}/{slug}/index.html}'},
+}

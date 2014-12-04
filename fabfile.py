@@ -46,7 +46,7 @@ def serve():
     sys.stderr.write('Serving on port {0} ...\n'.format(PORT))
     server.serve_forever()
 
-def reserve():
+def runserver():
     build()
     serve()
 
