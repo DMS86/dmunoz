@@ -4,7 +4,7 @@ class HomeRenderer(StaticSiteRenderer):
     def get_paths(self):
         return frozenset([
             "/",
-            "/tati/escala-de-notas/",
+            "/escala-de-notas/",
         ])
 
 renderers = [HomeRenderer, ]
