@@ -1,0 +1,115 @@
+
+
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8" />
+        <title>Diego Muñoz | </title>
+        
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+
+        
+    <link href="/site_media/static/pinax/css/theme.css" rel="stylesheet">
+    <link href="/site_media/static/css/site.css" rel="stylesheet">
+    
+
+
+        
+            <!-- HTML5 shim, for IE6-8 support of HTML elements -->
+            <!--[if lt IE 9]>
+                <script src="/site_media/static/pinax/js/html5shiv.js"></script>
+            <![endif]-->
+        
+
+        
+    
+
+    </head>
+    <body class="home" id="">
+        <div class="">
+
+            
+
+            
+<h1>Escala de notas</h1>
+<br/>
+
+Nota minima:
+<input type="number" step="0.1" data-bind="value: notaMinima, numeric: number"/>
+
+<br/>
+
+Nota maxima:
+<input type="number" step="any" data-bind="value: notaMaxima" disabled/>
+
+<br/>
+
+Total de puntos:
+<input type="number" step="any" data-bind="value: totalPuntos"/>
+
+<br/>
+
+Porcentaje de nota 4:
+<input type="number" step="any" data-bind="value: porcentaje"/>
+
+<br/>
+
+Redondear puntaje de nota 4 para abajo:
+<input type="checkbox" data-bind="checked: redondear4ParaAbajo"/>
+
+<br/>
+<br/>
+<br/>
+
+<table>
+    <tr>
+        <td>Puntaje</td>
+        <td>Nota</td>
+    </tr>
+    <tr data-bind="repeat: { count: 2*totalPuntos()+1}">
+        <td><span data-bind="text: $index/2" /></td>
+        <td><span data-bind="text: calcularNota($index)" /></td>
+    </tr>
+</div>
+
+</table>
+
+
+
+
+
+            
+                <hr />
+                <footer>
+                    <div class="container">
+                        
+    Creado por Diego Muñoz
+
+
+                    </div>
+                </footer>
+            
+        </div>
+
+        
+    <script src="/site_media/static/jquery/js/jquery-2.1.1.min.js"></script>
+    <script src="/site_media/static/js/lib/bootstrap.min.js"></script>
+    <script src="/site_media/static/js/lib/knockout-3.1.0.js"></script>
+    <script src="/site_media/static/pinax/js/theme.js"></script>
+    
+    <script src="/site_media/static/js/lib/knockout-repeat.js"></script>
+    <script src="/site_media/static/js/src/viewModel.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            ko.applyBindings(vm);
+        });
+    </script>
+
+
+
+        
+    
+
+    </body>
+</html>
