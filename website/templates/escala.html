@@ -1,7 +1,7 @@
 {% extends "site_base.html" %}
 {% load staticfiles %}
 
-{% block head_title %}{% endblock %}
+{% block head_title %}Escala de notas{% endblock %}
 
 {% block extra_script %}
     <script src="{% static "js/lib/knockout-repeat.js" %}"></script>
@@ -34,31 +34,31 @@
     <div class="col-md-10">
         <table class="table">
             <tr>
-                <td align="center"><span>Nota minima</span></td>
-                <td align="center"><span>Nota maxima</span></td>
+                <td align="center"><span>Nota mínima</span></td>
+                <td align="center"><span>Nota máxima</span></td>
                 <td align="center"><span>Total de puntos</span></td>
-                <td align="center"><span>Nota limite</span></td>
-                <td align="center"><span>Porcentaje de nota limite</span></td>
-                <td align="center"><span>Redondear puntaje de nota 4 para abajo</span></td>
+                <td align="center"><span>Nota límite</span></td>
+                <td align="center"><span>Porcentaje de nota límite</span></td>
+                <td align="center"><span>Redondear puntaje de nota límite para abajo</span></td>
             </tr>
             <tr>
                 <td align="center">
-                    <input type="number" step="0.1" data-bind="value: notaMinima"/>
+                    <input type="number" step="0.1" min="0" data-bind="event: { change: checkValoresNotas }, value: notaMinima, valueUpdate: 'afterkeydown'"/>
                 </td>
                 <td align="center">
-                    <input type="number" step="any" data-bind="value: notaMaxima"/>
+                    <input type="number" step="0.1" min="1" data-bind="event: { change: checkValoresNotas }, value: notaMaxima, valueUpdate: 'afterkeydown'"/>
                 </td>
                 <td align="center">
-                    <input type="number" step="any" data-bind="value: totalPuntos"/>
+                    <input type="number" step="any" min="1" data-bind="value: totalPuntos"/>
                 </td>
                 <td align="center">
-                    <input type="number" step="0.1" data-bind="value: notaLimite"/>
+                    <input type="number" step="0.1" min="1" data-bind="value: notaLimite"/>
                 </td>
                 <td align="center">
-                    <input type="number" step="any" data-bind="value: porcentaje"/>
+                    <input type="number" step="any" min="1" max="99" data-bind="value: porcentaje"/>
                 </td>
                 <td align="center">
-                    <input type="checkbox" data-bind="checked: redondear4ParaAbajo"/>
+                    <input type="checkbox" data-bind="checked: redondearNotaLimiteParaAbajo"/>
                 </td>
             </tr>
         </table>
