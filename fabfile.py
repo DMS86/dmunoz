@@ -16,7 +16,10 @@ def gen():
     local('python manage.py staticsitegen')
     local('python manage.py collectstatic --noinput')
     local('git add .')
-    local("git commit -m 'update html'")
+    try:
+        local("git commit -m 'update html'")
+    except:
+        pass
     local('git push origin master')
 
 def update_files():
