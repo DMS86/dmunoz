@@ -27,7 +27,7 @@ def update_files():
     local('git pull origin master -- website/site_media')
     local('mv website/site_media .')
     local('rm -r website')
-    local('git commit -m 'website update'')
+    local("git commit -m 'website update'")
     local('git push origin gh-pages')
     local('git checkout master')
 
