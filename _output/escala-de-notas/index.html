@@ -17,6 +17,10 @@
         input {
             text-align:right;
         }
+        .table-striped > tbody > tr:nth-child(odd) > td, 
+        .table-striped > tbody > tr:nth-child(odd) > th {
+           background-color: #C7BFE6;
+         }
     </style>
 
 
@@ -84,10 +88,10 @@
     <div class="col-md-3">
     </div>
     <div class="col-md-6">
-        <table class="table table-condensed table-striped">
+        <table class="table table-condensed table-striped table-hover">
             <tr>
-                <td align="center">Puntaje</td>
-                <td align="center">Nota</td>
+                <td align="center"><b>Puntaje</b></td>
+                <td align="center"><b>Nota</b></td>
             </tr>
             <tr data-bind="repeat: { count: 2*totalPuntos()+1}">
                 <td align="center"><span data-bind="text: $index/2" /></td>
