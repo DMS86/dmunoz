@@ -15,6 +15,9 @@ def restart(branch=None):
 def gen():
     local('python manage.py staticsitegen')
     local('python manage.py collectstatic --noinput')
+    local('git add .')
+    local("git commit -m 'update html'")
+    local('git push origin master')
 
 def update_files():
     local('git checkout gh-pages')
