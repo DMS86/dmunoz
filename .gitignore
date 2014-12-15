@@ -2,5 +2,5 @@
 *.pyc
 *.swp
 *.db
-output/
+_output/
 themes/
