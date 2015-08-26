@@ -1,9 +1,9 @@
 
 <!doctype html>
-<html lang="en-us">
+<html lang="None">
   <head>
     <meta charset="utf-8">
-    <title>Android: How-to Authenticate with OAuth 2.0 - Client-Side in Instagram - Zinnia's Weblog</title>
+    <title>Zinnia's Weblog - Android: How-to Authenticate with OAuth 2.0 - Client-Side in Instagram</title>
     <meta name="robots" content="follow, all" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="I assume that you have an Android application currently working, and that your main class is called `MainActivity`. These are the steps to follow: 1. Create an Instagram account 2. [Register you application](https://instagram.com/developer/) # 3. Register a New Client Fill the form fields as follows. Note that in the Redurect..." />
@@ -13,13 +13,29 @@
     <meta name="generator" content="Zinnia 0.15.2" />
 
     <link rel="pingback" href="/xmlrpc/" />
-    <link rel="shortcut icon" href="/site_media/static/zinnia/theme/img/favicon.ico" />
     <link rel="home" href="/blog/" />
-    <link rel="stylesheet" type="text/css" media="screen, projection" href="/site_media/static/zinnia/theme/css/screen.css" />
-    <link rel="stylesheet" type="text/css" media="print" href="/site_media/static/zinnia/theme/css/print.css" />
-    <!--[if lt IE 8]>
-        <link rel="stylesheet" type="text/css" media="screen, projection" href="/site_media/static/zinnia/theme/css/ie.css" />
+    <link rel="stylesheet" href="/site_media/static/zinnia_bootstrap/bootstrap/css/bootstrap.min.css" />
+    <style type="text/css">
+      body {
+        padding-top: 70px;
+      }
+      body > nav img {
+        margin-top: 5px;
+        margin-left: 10px;
+      }
+      p.entry-discussions {
+        margin-bottom: 0px;
+      }
+    </style>
+    <!--[if lt IE 9]>
+        <script src="/site_media/static/zinnia_bootstrap/assets/js/html5shiv.js"></script>
+        <script src="/site_media/static/zinnia_bootstrap/assets/js/respond.min.js"></script>
     <![endif]-->
+    <link rel="shortcut icon" href="/site_media/static/zinnia/theme/img/favicon.ico" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/site_media/static/zinnia_bootstrap/assets/ico/apple-touch-icon-144-precomposed.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/site_media/static/zinnia_bootstrap/assets/ico/apple-touch-icon-114-precomposed.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/site_media/static/zinnia_bootstrap/assets/ico/apple-touch-icon-72-precomposed.png" />
+    <link rel="apple-touch-icon-precomposed" href="/site_media/static/zinnia_bootstrap/assets/ico/apple-touch-icon-57-precomposed.png" />
     
   
     <link rel="index" href="/blog/" />
@@ -51,129 +67,153 @@
 
     
   </head>
-  <body class="zinnia default blue right-sidebar entry entry-1 year-2015 month-08 week-35 day-26">
-    <div class="container">
-      <header id="header" role="banner">
-        <nav>
-          <ul class="top-navigation">
+  <body class="zinnia entry entry-1 year-2015 month-08 week-35 day-26">
+    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <img src="/site_media/static/zinnia_bootstrap/img/zinnia.png" class="pull-left" alt="Zinnia's Weblog" />
+          <a href="/blog/" title="Zinnia's Welog" class="navbar-brand" rel="home">
+            Zinnia's Weblog
+          </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+          <ul class="nav navbar-nav navbar-left">
+            
+            <li >
+              <a href="/blog/categories/" title="Category list">
+                Categories
+              </a>
+            </li>
+            
+            <li >
+              <a href="/blog/authors/" title="Author list">
+                Authors
+              </a>
+            </li>
+            
+            <li >
+              <a href="/blog/tags/" title="Tag list">
+                Tags
+              </a>
+            </li>
+            <li class="divider-vertical"></li>
+          </ul>
+          <form method="get" action="/blog/search/" class="navbar-form navbar-left">
+            <div class="form-group">
+              <input type="text" class="search-query form-control" placeholder="Search" name="pattern" value="" />
+            </div>
+            <button type="submit" name="submit" class="btn btn-default btn-sm">
+              <span class="glyphicon glyphicon-search"></span>
+            </button>
+          </form>
+          <ul class="nav navbar-nav navbar-right">
+            
+            <li >
             <li>
-              <a href="/blog/sitemap/" title="Sitemap" class="sitemap" rel="sitemap">
+              <a href="/blog/sitemap/" title="Sitemap" class="sitemap">
                 Sitemap
               </a>
             </li>
+            <li class="divider-vertical"></li>
             <li>
-              <a href="/blog/feeds/" title="RSS feed of latest entries" class="feeds">
-                RSS feed
+              <a href="/blog/feeds/" title="RSS Feed of latest entries" class="feeds">
+                RSS Feed
               </a>
             </li>
           </ul>
-        </nav>
-        <form method="get" action="/blog/search/">
-          <p>
-            <input type="text" name="pattern" placeholder="Keywords..."  />
-            <input type="submit" class="submitbutton" value="OK" />
-          </p>
-        </form>
-        <h1>
-          <a href="/blog/" title="Zinnia's Weblog" rel="home">
-            Zinnia's Weblog
-          </a>
-        </h1>
-        <blockquote>
-          <p>Just another Zinnia weblog.</p>
-        </blockquote>
-        
-  <nav>
-  <ul class="breadcrumbs">
+        </div>
+      </div>
+    </nav>
     
-    <li>
-      
-      <a href="/blog/" title="Blog">Blog</a>
-      
-    </li>
+    <div class="container">
+      <div class="row">
+        <div id="content" class="hfeed col-xs-12 col-sm-8 col-md-8 col-lg-8">
+          
+  <ul class="breadcrumb">
+  
+  <li >
     
-    <li>
-      
-      <a href="/blog/2015/" title="2015">2015</a>
-      
-    </li>
+    <a href="/blog/" title="Blog">Blog</a>
     
-    <li>
-      
-      <a href="/blog/2015/08/" title="August">August</a>
-      
-    </li>
+  </li>
+  
+  <li >
     
-    <li>
-      
-      <a href="/blog/2015/08/26/" title="26">26</a>
-      
-    </li>
+    <a href="/blog/2015/" title="2015">2015</a>
     
-    <li>
-      
-      Android: How-to Authenticate with OAuth 2.0 - Client-Side in Instagram
-      
-    </li>
+  </li>
+  
+  <li >
     
-  </ul>
-</nav>
+    <a href="/blog/2015/08/" title="August">August</a>
+    
+  </li>
+  
+  <li >
+    
+    <a href="/blog/2015/08/26/" title="26">26</a>
+    
+  </li>
+  
+  <li class="active">
+    
+    Android: How-to Authenticate with OAuth 2.0 - Client-Side in Instagram
+    
+  </li>
+  
+</ul>
 
 
-      </header>
-      
-      <div id="content" class="hfeed" role="main">
-        
+          
 
 
   
-<article id="entry-1" class="hentry" itemscope itemtype="http://schema.org/Article">
+<article id="entry-1" class="hentry">
   
-  <header class="entry-header">
+  <header class="entry-header page-header">
+    <h2 class="entry-title">
     
-    <h2 class="entry-title" itemprop="name">
-      <a href="/blog/2015/08/26/android-how-authenticate-oauth-20-client-side-instagram/" title="Android: How-to Authenticate with OAuth 2.0 - Client-Side in Instagram" rel="bookmark" itemprop="url">
+      <a href="/blog/2015/08/26/android-how-authenticate-oauth-20-client-side-instagram/" title="Android: How-to Authenticate with OAuth 2.0 - Client-Side in Instagram" rel="bookmark">
         Android: How-to Authenticate with OAuth 2.0 - Client-Side in&nbsp;Instagram
       </a>
+    
+    
+      <br />
+      <small class="entry-info">
+        
+        
+        
+        Written by
+        
+        <span class="vcard author">
+          <a href="/blog/authors/dmunoz/" class="fn url nickname" rel="author"
+             title="Show all dmunoz's entries">dmunoz</a></span>
+        
+        on
+        
+        
+        
+        
+        <time class="published" datetime="2015-08-26T23:31:28+00:00" pubdate="pubdate">Aug. 26, 2015</time>
+        
+        
+        
+        .
+        
+        
+      </small>
+    
     </h2>
     
-    
-    <p class="entry-info">
-      
-      
-      
-      Written by
-      
-      <span class="vcard author" itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <a href="/blog/authors/dmunoz/" class="fn url nickname" rel="author"
-           title="Show all dmunoz's entries" itemprop="url">dmunoz</a></span>
-      
-      on
-      
-      
-      
-      
-      <time class="published" datetime="2015-08-26T22:25:43+00:00" itemprop="datePublished">Aug. 26, 2015</time>
-      
-      
-      
-      
-      in
-      
-      <a href="/blog/categories/android/"
-         title="Show all entries in Android"
-         rel="tag category" itemprop="articleSection">Android</a>.
-      
-      
+    <p class="entry-last-update" style="display: none;">
+      Last update on <time class="updated" datetime="2015-08-26T23:41:37.712174+00:00">Aug. 26, 2015</time>.
     </p>
-    
-    
-    <p class="entry-last-update">
-      Last update on <time class="updated" datetime="2015-08-26T22:28:08.806860+00:00" itemprop="dateModified">Aug. 26, 2015</time>.
-    </p>
-    
-    
-    <meta itemprop="dateCreated" content="2015-08-26T22:25:43+00:00" />
     
   </header>
   
@@ -181,28 +221,13 @@
   
   <div class="entry-body">
     
-    <meta itemprop="wordCount" content="680" />
-    
-
     
     
     
-
-    
-    
-    <div class="entry-summary" itemprop="headline">
-      <p>This tutorial shows how to integrate Instagram Client-Side Authentication to your existing Android application</p>
-    </div>
-    
-    
-
-    
-    <div class="entry-content" itemprop="articleBody">
+    <div class="entry-content lead">
       <p>I assume that you have an Android application currently working, and that your main class is called <code>MainActivity</code>. These are the steps to follow:</p>
-<ol>
-<li>Create an Instagram account</li>
-<li><a href="https://instagram.com/developer/">Register you application</a></li>
-</ol>
+<h3>1. Create an Instagram account</h3>
+<h3>2. <a href="https://instagram.com/developer/">Register you application</a></h3>
 <h1>3. Register a New Client</h1>
 <p>Fill the form fields as follows. Note that in the Redurect URI field, you need to configure a redirect URI with a custom scheme. For this example, I will use <em>customscheme</em>.</p>
 <ul>
@@ -350,7 +375,6 @@
 </code></pre>
     </div>
     
-
     
     
     
@@ -358,29 +382,28 @@
   
 
   
-  <footer class="entry-footer">
+  <footer class="entry-footer well">
     
     <p class="entry-tags">
-      <strong>Tags</strong> :
-      <meta itemprop="keywords" content="android,instagram,oauth2.0" />
+      <span class="glyphicon glyphicon-tags"></span> <strong>Tags</strong> :
       
       <a href="/blog/tags/android/"
          title="Show all entries tagged by android"
-         rel="tag" itemprop="articleSection">android</a>
+         rel="tag">android</a>
       
       <a href="/blog/tags/instagram/"
          title="Show all entries tagged by instagram"
-         rel="tag" itemprop="articleSection">instagram</a>
+         rel="tag">instagram</a>
       
       <a href="/blog/tags/oauth2.0/"
          title="Show all entries tagged by oauth2.0"
-         rel="tag" itemprop="articleSection">oauth2.0</a>
+         rel="tag">oauth2.0</a>
       
     </p>
     
     
     <p class="entry-shorturl">
-      <strong>Short url</strong> :
+      <span class="glyphicon glyphicon-bookmark"></span> <strong>Short url</strong> :
       <a href="http://example.com/blog/1/"
          title="Short URL to Android: How-to Authenticate with OAuth 2.0 - Client-Side in Instagram"
          rel="shortlink">
@@ -390,11 +413,9 @@
     
     
     <p class="entry-discussions">
-      <strong>Discussions</strong> :
+      <span class="glyphicon glyphicon-comment"></span> <strong>Discussions</strong> :
       
       
-      <meta itemprop="commentCount" content="0" />
-      <meta itemprop="discussionUrl" content="/blog/2015/08/26/android-how-authenticate-oauth-20-client-side-instagram/#comments" />
       
       
       No comments yet.
@@ -425,29 +446,21 @@
 
 
 
-<aside role="complementary" class="entry-widgets">
+<aside class="entry-widgets" role="complementary">
   
   
   
   
   
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  <div class="entry-similar">
-    <h3>Similar entries</h3>
+  <div class="entry-similar panel panel-default">
+    <div class="panel-heading">
+      Similar entries
+    </div>
     
-<ul class="no-entries-similar">
+<ul class="list-group">
   
-  <li>
+  <li class="list-group-item">
     No similar entries.
   </li>
   
@@ -455,55 +468,56 @@
 
   </div>
   
+  
+  <div class="entry-prev-next">
+    <ul class="pager">
+      
+      
+      
+      
+      
+      
+    </ul>
+  </div>
+  
 </aside>
 
 
 
-<section id="pingbacks">
-  <h3>Pingbacks</h3>
-  
-  
-  
-  <p>Pingbacks are open.</p>
-  
-  
-</section>
+
+
+
+<p>Pingbacks are open.</p>
 
 
 
 
-<section id="trackbacks">
-  <h3>Trackbacks</h3>
-  
-  
-  
-  <p>
-    <a href="/blog/trackback/1/" rel="trackback">
-      Trackback URL</a>
-  </p>
-  
-  
-</section>
 
 
 
 
-<section id="comments">
-  <h3>Comments</h3>
-  
-    
-  <p>No comments yet.</p>
-    
-  
-</section>
+<p>
+  <a href="/blog/trackback/1/" rel="trackback">
+    Trackback URL</a>
+</p>
+
+
+
+
+
+
+
+<p>No comments yet.</p>
+
+
 
 
 
 
   
 
-<form action="/comments/post/" method="post" id="comment-form">
-  <div><input type='hidden' name='csrfmiddlewaretoken' value='tJW8oBAzesUx2DmWyvkS55AbDLIwTEo9' /></div>
+<form action="/comments/post/" method="post" id="comment-form" class="well form-horizontal">
+  <div><input type='hidden' name='csrfmiddlewaretoken' value='jqdnsXv9BRUPOGfjHFwGh1WzvBy42GcG' /></div>
   
   <fieldset>
     <legend>Post your comment</legend>
@@ -513,16 +527,22 @@
     
     <input id="id_object_pk" name="object_pk" type="hidden" value="1" />
     
-    <input id="id_timestamp" name="timestamp" type="hidden" value="1440629004" />
+    <input id="id_timestamp" name="timestamp" type="hidden" value="1440632580" />
     
-    <input id="id_security_hash" maxlength="40" name="security_hash" type="hidden" value="8bcbd5c13d90154031442c446b7877cf6621cc1f" />
+    <input id="id_security_hash" maxlength="40" name="security_hash" type="hidden" value="99893c93e608b8306203cac874329b4e5515f610" />
     
     
     
     <div>
-      <label for="id_name">Name:</label>
       
-      <input id="id_name" maxlength="50" name="name" type="text" />
+      <div class="form-group">
+        <label for="id_name" class="col-lg-2 control-label">Name</label>
+        <div class="col-lg-10">
+          
+            <input type="text" id="id_name" class="form-control"  name="name" />
+          
+        </div>
+      </div>
     </div>
     
     
@@ -530,9 +550,15 @@
     
     
     <div>
-      <label for="id_email">Email address:</label>
       
-      <input id="id_email" name="email" type="email" />
+      <div class="form-group">
+        <label for="id_email" class="col-lg-2 control-label">Email address</label>
+        <div class="col-lg-10">
+          
+            <input type="text" id="id_email" class="form-control"  name="email" />
+          
+        </div>
+      </div>
     </div>
     
     
@@ -540,9 +566,15 @@
     
     
     <div>
-      <label for="id_url">URL:</label>
       
-      <input id="id_url" name="url" type="url" />
+      <div class="form-group">
+        <label for="id_url" class="col-lg-2 control-label">URL</label>
+        <div class="col-lg-10">
+          
+            <input type="text" id="id_url" class="form-control"  name="url" />
+          
+        </div>
+      </div>
     </div>
     
     
@@ -550,10 +582,15 @@
     
     
     <div>
-      <label for="id_comment">Comment:</label>
       
-      <textarea cols="40" id="id_comment" maxlength="3000" name="comment" rows="10">
-</textarea>
+      <div class="form-group">
+        <label for="id_comment" class="col-lg-2 control-label">Comment</label>
+        <div class="col-lg-10">
+          
+            <textarea id="id_comment" class="form-control" rows="10" name="comment"></textarea>
+          
+        </div>
+      </div>
     </div>
     
     
@@ -561,17 +598,23 @@
     
     
     <div style="display:none;">
-      <label for="id_honeypot">If you enter anything in this field your comment will be treated as spam:</label>
       
-      <input id="id_honeypot" name="honeypot" type="text" />
+      <div class="form-group">
+        <label for="id_honeypot" class="col-lg-2 control-label">If you enter anything in this field your comment will be treated as spam</label>
+        <div class="col-lg-10">
+          
+            <input type="text" id="id_honeypot" class="form-control"  name="honeypot" />
+          
+        </div>
+      </div>
     </div>
     
     
     
     
     <p class="submit">
-      <input type="submit" name="submit" class="submit-post" value="Post" />
-      <input type="submit" name="preview" class="submit-preview" value="Preview" />
+      <input type="submit" name="submit" class="submit-post btn btn-primary submit-preview" value="Post" />
+      <input type="submit" name="preview" class="submit-preview btn btn-default submit-post" value="Preview" />
     </p>
   </fieldset>
 </form>
@@ -580,193 +623,121 @@
 
 
 
-      </div>
-      <div id="sidebar" role="complementary">
-        
-<aside id="widget-welcome" class="widget">
-  <h3>Welcome!</h3>
-  <p>
-    This simple theme is the default appearance of Zinnia.
-  </p>
-  <p>
-    Don't hesitate to override the template <strong>zinnia/base.html</strong> to start <a href='http://docs.django-blog-zinnia.com/en/latest/how-to/customize_look_and_feel.html'>customizing your Weblog</a>.
-  </p>
+        </div>
+        <div id="sidebar" class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+          
+<aside id="widget-welcome" class="widget panel panel-default">
+  <div class="panel-heading">
+    Welcome!
+  </div>
+  <div class="panel-body">
+    <p>
+      This simple theme is the default appearance of Zinnia.
+    </p>
+    <p>
+      Don't hesitate to override the template <strong>zinnia/base.html</strong> to start <a href='http://docs.django-blog-zinnia.com/en/latest/how-to/customize_look_and_feel.html'>customizing your Weblog</a>.
+    </p>
+  </div>
 </aside>
-<aside id="widget-categories" class="widget">
-  <h3>
-    <a href="/blog/categories/">Categories</a>
-  </h3>
+<aside id="widget-categories" class="widget panel panel-default">
+  <div class="panel-heading">
+    Categories
+  </div>
   
-<ul class="categories">
+<ul class="category-root list-group">
   
-  <li>
-    <a href="/blog/categories/android/"
-       title="Show all entries in Android">Android</a>
-    1 entry
+  <li class="list-group-item">
+    <a href="#">No categories yet.</a>
   </li>
   
 </ul>
 
-
 </aside>
-<aside id="widget-authors" class="widget">
-  <h3>
-    <a href="/blog/authors/">Authors</a>
-  </h3>
+<aside id="widget-authors" class="widget panel panel-default">
+  <div class="panel-heading">
+    Authors
+  </div>
   
-<ul class="authors">
+<ul class="list-group authors">
   
-  <li class="vcard">
+  <li class="vcard list-group-item">
     <a href="/blog/authors/dmunoz/"
        title="Show all dmunoz's entries"
-       class="fn url nickname">dmunoz</a>
-    1 entry
+       class="fn url nickname">dmunoz
+      <span class="label label-info">
+        1 entry
+      </span>
+    </a>
   </li>
   
 </ul>
 
 </aside>
-<aside id="widget-calendar" class="widget">
-  <h3>Calendar</h3>
-  <table class="entries-calendar">
-<caption>August 2015</caption>
-<thead><tr><th class="sun">Sun</th><th class="mon">Mon</th><th class="tue">Tue</th><th class="wed">Wed</th><th class="thu">Thu</th><th class="fri">Fri</th><th class="sat">Sat</th></tr></thead>
-<tfoot><tr><td colspan="3" class="prev">&nbsp;</td><td class="pad">&nbsp;</td><td colspan="3" class="next">&nbsp;</td></tr></tfoot>
-<tbody>
-<tr><td class="noday">&nbsp;</td><td class="noday">&nbsp;</td><td class="noday">&nbsp;</td><td class="noday">&nbsp;</td><td class="noday">&nbsp;</td><td class="noday">&nbsp;</td><td class="sat">1</td></tr>
-<tr><td class="sun">2</td><td class="mon">3</td><td class="tue">4</td><td class="wed">5</td><td class="thu">6</td><td class="fri">7</td><td class="sat">8</td></tr>
-<tr><td class="sun">9</td><td class="mon">10</td><td class="tue">11</td><td class="wed">12</td><td class="thu">13</td><td class="fri">14</td><td class="sat">15</td></tr>
-<tr><td class="sun">16</td><td class="mon">17</td><td class="tue">18</td><td class="wed">19</td><td class="thu">20</td><td class="fri">21</td><td class="sat">22</td></tr>
-<tr><td class="sun">23</td><td class="mon">24</td><td class="tue">25</td><td class="wed entry"><a href="/blog/2015/08/26/" class="archives">26</a></td><td class="thu">27</td><td class="fri">28</td><td class="sat">29</td></tr>
-<tr><td class="sun">30</td><td class="mon">31</td><td class="noday">&nbsp;</td><td class="noday">&nbsp;</td><td class="noday">&nbsp;</td><td class="noday">&nbsp;</td><td class="noday">&nbsp;</td></tr>
-</tbody>
-</table>
-
-
-</aside>
-<aside id="widget-tags" class="widget">
-  <h3>
-    <a href="/blog/tags/">Tags</a>
-  </h3>
+<aside id="widget-recents" class="widget panel panel-default">
+  <div class="panel-heading">
+    Recent entries
+  </div>
   
-<ul class="tag-cloud">
+<ul class="list-group">
   
-  <li>
-    <a href="/blog/tags/android/"
-       title="1 entry tagged by android"
-       class="tag-1">android</a>
-  </li>
-  
-  <li>
-    <a href="/blog/tags/instagram/"
-       title="1 entry tagged by instagram"
-       class="tag-1">instagram</a>
-  </li>
-  
-  <li>
-    <a href="/blog/tags/oauth2.0/"
-       title="1 entry tagged by oauth2.0"
-       class="tag-1">oauth2.0</a>
-  </li>
-  
-</ul>
-
-</aside>
-<aside id="widget-recents" class="widget">
-  <h3>Recent entries</h3>
-  
-<ul class="entries-recent">
-  
-  <li>
+  <li class="list-group-item">
     <a href="/blog/2015/08/26/android-how-authenticate-oauth-20-client-side-instagram/" title="Android: How-to Authenticate with OAuth 2.0 - Client-Side in Instagram" rel="bookmark">Android: How-to Authenticate with OAuth 2.0 - Client-Side in Instagram</a>
   </li>
   
 </ul>
 
 </aside>
-<aside id="widget-comments" class="widget">
-  <h3>Recent comments</h3>
+<aside id="widget-comments" class="widget panel panel-default">
+  <div class="panel-heading">
+    Recent comments
+  </div>
   
-<ul class="no-comments-recent">
+<ul class="list-group">
   
-  <li>
-    No comments yet.
+  <li class="list-group-item">
+    <a href="#">No comments yet.</a>
   </li>
   
 </ul>
 
 </aside>
-<aside id="widget-linkbacks" class="widget">
-  <h3>Recent linkbacks</h3>
+<aside id="widget-linkbacks" class="widget panel panel-default">
+  <div class="panel-heading">
+    Recent linkbacks
+  </div>
   
-<ul class="no-linkbacks-recent">
+<ul class="list-group">
   
-  <li>
-    No linkbacks yet.
+  <li class="list-group-item">
+    <a href="#">No linkbacks yet.</a>
   </li>
   
 </ul>
 
 </aside>
-<aside id="widget-randoms" class="widget">
-  <h3>Random entries</h3>
+<aside id="widget-randoms" class="widget panel panel-default">
+  <div class="panel-heading">
+    Random entries
+  </div>
   
-<ul class="entries-random">
+<ul class="list-group">
   
-  <li>
+  <li class="list-group-item">
     <a href="/blog/2015/08/26/android-how-authenticate-oauth-20-client-side-instagram/" title="Android: How-to Authenticate with OAuth 2.0 - Client-Side in Instagram" rel="bookmark">Android: How-to Authenticate with OAuth 2.0 - Client-Side in Instagram</a>
   </li>
   
 </ul>
 
 </aside>
-<aside id="widget-populars" class="widget">
-  <h3>Popular entries</h3>
+<aside id="widget-populars" class="widget panel panel-default">
+  <div class="panel-heading">
+    Popular entries
+  </div>
   
-<ul class="no-entries-popular">
+<ul class="list-group">
   
-  <li>
-    No entries yet.
-  </li>
-  
-</ul>
-
-</aside>
-<aside id="widget-archives" class="widget">
-  <h3>Archives</h3>
-  
-
-<ul class="archives-entries-tree">
-  
-  <li>
-    <a title="Archives 2015" rel="archives"
-       href="/blog/2015/">2015</a>
-    
-    <ul>
-      
-      <li>
-        
-        <a title="Archives August 2015" rel="archives"
-           href="/blog/2015/08/">
-          August
-        </a>
-        
-        
-        <ul>
-          
-          <li>
-            
-            <a title="Archives Aug. 26, 2015" rel="archives"
-               href="/blog/2015/08/26/">
-              August 26
-            </a>
-            
-          </li>
-          
-        </ul>
-      </li>
-      
-    </ul>
+  <li class="list-group-item">
+    <a href="#">No entries yet.</a>
   </li>
   
 </ul>
@@ -774,10 +745,13 @@
 </aside>
 
 
+        </div>
       </div>
-      <footer id="footer" role="contentinfo">
-        <p>Powered by <a href="http://www.djangoproject.com">Django</a> and <a href="https://github.com/Fantomas42/django-blog-zinnia">Zinnia 0.15.2</a>.</p>
-      </footer>
     </div>
+    <footer class="container">
+      <p>Powered by <a href="http://www.djangoproject.com">Django</a> and <a href="https://github.com/Fantomas42/django-blog-zinnia">Zinnia 0.15.2</a>.</p>
+    </footer>
+    <script type="text/javascript" src="/site_media/static/zinnia_bootstrap/assets/js/jquery.js"></script>
+    <script type="text/javascript" src="/site_media/static/zinnia_bootstrap/bootstrap/js/bootstrap.min.js"></script>
   </body>
 </html>
