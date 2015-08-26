@@ -1,0 +1,783 @@
+
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <title>Android: How-to Authenticate with OAuth 2.0 - Client-Side in Instagram - Zinnia's Weblog</title>
+    <meta name="robots" content="follow, all" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="I assume that you have an Android application currently working, and that your main class is called `MainActivity`. These are the steps to follow: 1. Create an Instagram account 2. [Register you application](https://instagram.com/developer/) # 3. Register a New Client Fill the form fields as follows. Note that in the Redurect..." />
+    <meta name="keywords" content="android,instagram,oauth2.0" />
+    <meta name="author" content="Fantomas42" />
+    
+    <meta name="generator" content="Zinnia 0.15.2" />
+
+    <link rel="pingback" href="/xmlrpc/" />
+    <link rel="shortcut icon" href="/site_media/static/zinnia/theme/img/favicon.ico" />
+    <link rel="home" href="/blog/" />
+    <link rel="stylesheet" type="text/css" media="screen, projection" href="/site_media/static/zinnia/theme/css/screen.css" />
+    <link rel="stylesheet" type="text/css" media="print" href="/site_media/static/zinnia/theme/css/print.css" />
+    <!--[if lt IE 8]>
+        <link rel="stylesheet" type="text/css" media="screen, projection" href="/site_media/static/zinnia/theme/css/ie.css" />
+    <![endif]-->
+    
+  
+    <link rel="index" href="/blog/" />
+    <link rel="author" type="text/plain" href="/blog/humans.txt" />
+    <link rel="EditURI" type="application/rsd+xml" href="/blog/rsd.xml" />
+    <link rel="wlwmanifest" type="application/wlwmanifest+xml" href="/blog/wlwmanifest.xml" />
+    <link rel="search" type="application/opensearchdescription+xml" title="Zinnia's Weblog" href="/blog/opensearch.xml" />
+    <link rel="alternate" type="application/rss+xml" title="RSS feed of latest entries" href="/blog/feeds/" />
+    <link rel="alternate" type="application/rss+xml" title="RSS feed of latest discussions" href="/blog/feeds/discussions/" />
+    
+<link rel="archives" title="Archives August 2015" href="/blog/2015/08/" />
+
+
+
+  
+  
+  <link rel="shortlink" href="http://example.com/blog/1/" />
+  <link rel="canonical" href="/blog/2015/08/26/android-how-authenticate-oauth-20-client-side-instagram/" />
+  
+  <link rel="alternate" type="application/rss+xml" title="RSS feed of discussions on Android: How-to Authenticate with OAuth 2.0 - Client-Side in Instagram"
+        href="/blog/feeds/discussions/2015/08/26/android-how-authenticate-oauth-20-client-side-instagram/" />
+  <link rel="alternate" type="application/rss+xml" title="RSS feed of comments on Android: How-to Authenticate with OAuth 2.0 - Client-Side in Instagram"
+        href="/blog/feeds/comments/2015/08/26/android-how-authenticate-oauth-20-client-side-instagram/" />
+  <link rel="alternate" type="application/rss+xml" title="RSS feed of pingbacks on Android: How-to Authenticate with OAuth 2.0 - Client-Side in Instagram"
+        href="/blog/feeds/pingbacks/2015/08/26/android-how-authenticate-oauth-20-client-side-instagram/" />
+  <link rel="alternate" type="application/rss+xml" title="RSS feed of trackbacks on Android: How-to Authenticate with OAuth 2.0 - Client-Side in Instagram"
+        href="/blog/feeds/trackbacks/2015/08/26/android-how-authenticate-oauth-20-client-side-instagram/" />
+  
+
+    
+  </head>
+  <body class="zinnia default blue right-sidebar entry entry-1 year-2015 month-08 week-35 day-26">
+    <div class="container">
+      <header id="header" role="banner">
+        <nav>
+          <ul class="top-navigation">
+            <li>
+              <a href="/blog/sitemap/" title="Sitemap" class="sitemap" rel="sitemap">
+                Sitemap
+              </a>
+            </li>
+            <li>
+              <a href="/blog/feeds/" title="RSS feed of latest entries" class="feeds">
+                RSS feed
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <form method="get" action="/blog/search/">
+          <p>
+            <input type="text" name="pattern" placeholder="Keywords..."  />
+            <input type="submit" class="submitbutton" value="OK" />
+          </p>
+        </form>
+        <h1>
+          <a href="/blog/" title="Zinnia's Weblog" rel="home">
+            Zinnia's Weblog
+          </a>
+        </h1>
+        <blockquote>
+          <p>Just another Zinnia weblog.</p>
+        </blockquote>
+        
+  <nav>
+  <ul class="breadcrumbs">
+    
+    <li>
+      
+      <a href="/blog/" title="Blog">Blog</a>
+      
+    </li>
+    
+    <li>
+      
+      <a href="/blog/2015/" title="2015">2015</a>
+      
+    </li>
+    
+    <li>
+      
+      <a href="/blog/2015/08/" title="August">August</a>
+      
+    </li>
+    
+    <li>
+      
+      <a href="/blog/2015/08/26/" title="26">26</a>
+      
+    </li>
+    
+    <li>
+      
+      Android: How-to Authenticate with OAuth 2.0 - Client-Side in Instagram
+      
+    </li>
+    
+  </ul>
+</nav>
+
+
+      </header>
+      
+      <div id="content" class="hfeed" role="main">
+        
+
+
+  
+<article id="entry-1" class="hentry" itemscope itemtype="http://schema.org/Article">
+  
+  <header class="entry-header">
+    
+    <h2 class="entry-title" itemprop="name">
+      <a href="/blog/2015/08/26/android-how-authenticate-oauth-20-client-side-instagram/" title="Android: How-to Authenticate with OAuth 2.0 - Client-Side in Instagram" rel="bookmark" itemprop="url">
+        Android: How-to Authenticate with OAuth 2.0 - Client-Side in&nbsp;Instagram
+      </a>
+    </h2>
+    
+    
+    <p class="entry-info">
+      
+      
+      
+      Written by
+      
+      <span class="vcard author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <a href="/blog/authors/dmunoz/" class="fn url nickname" rel="author"
+           title="Show all dmunoz's entries" itemprop="url">dmunoz</a></span>
+      
+      on
+      
+      
+      
+      
+      <time class="published" datetime="2015-08-26T22:25:43+00:00" itemprop="datePublished">Aug. 26, 2015</time>
+      
+      
+      
+      
+      in
+      
+      <a href="/blog/categories/android/"
+         title="Show all entries in Android"
+         rel="tag category" itemprop="articleSection">Android</a>.
+      
+      
+    </p>
+    
+    
+    <p class="entry-last-update">
+      Last update on <time class="updated" datetime="2015-08-26T22:28:08.806860+00:00" itemprop="dateModified">Aug. 26, 2015</time>.
+    </p>
+    
+    
+    <meta itemprop="dateCreated" content="2015-08-26T22:25:43+00:00" />
+    
+  </header>
+  
+
+  
+  <div class="entry-body">
+    
+    <meta itemprop="wordCount" content="680" />
+    
+
+    
+    
+    
+
+    
+    
+    <div class="entry-summary" itemprop="headline">
+      <p>This tutorial shows how to integrate Instagram Client-Side Authentication to your existing Android application</p>
+    </div>
+    
+    
+
+    
+    <div class="entry-content" itemprop="articleBody">
+      <p>I assume that you have an Android application currently working, and that your main class is called <code>MainActivity</code>. These are the steps to follow:</p>
+<ol>
+<li>Create an Instagram account</li>
+<li><a href="https://instagram.com/developer/">Register you application</a></li>
+</ol>
+<h1>3. Register a New Client</h1>
+<p>Fill the form fields as follows. Note that in the Redurect URI field, you need to configure a redirect URI with a custom scheme. For this example, I will use <em>customscheme</em>.</p>
+<ul>
+<li>Application Name: [your-app-name]</li>
+<li>Description: [your-description]</li>
+<li>Website URL: [your-website-url]</li>
+<li><strong>Redirect URI(s): customscheme://oauth/callback/instagram/</strong></li>
+<li>Contact email: [your-email]</li>
+</ul>
+<p>Then, click on the <strong>Security</strong> tab and uncheck the Disable implicit OAuth option. Save the Client.</p>
+<h1>4. Add values to the strings.xml file</h1>
+<p>After saving the Client, you will get the Client ID and Client Secret in the Instagram website. Add these values in your strings.xml file in your project:</p>
+<pre><code>&lt;string name="instagram_id"&gt;yourClientId&lt;/string&gt;
+&lt;string name="instagram_scheme"&gt;customscheme&lt;/string&gt;
+&lt;string name="instagram_secret"&gt;yourClientSecret&lt;/string&gt;
+&lt;string name="instagram_token"&gt;instagram_token&lt;/string&gt;
+</code></pre>
+<h1>5. Create the InstagramLogin Activity</h1>
+<p>Start creating an Activity in your main package. The logic for the authentication process is the following:</p>
+<ol>
+<li>The system checks if there is an Access Token saved in SharedPreferences. </li>
+<li>If there is, it redirects to MainActivity. </li>
+<li>If not, it opens the Instagram authorization URL for the application.</li>
+<li>The user authorizes the application in the browser.</li>
+<li>The InstagramLogin Activity catches the Redirect URI with the <em>customscheme</em> from Instagram and gets the token.</li>
+<li>The InstagramLogin Activity saves the token in SharedPreferences and redirects to MainActivity.</li>
+</ol>
+<p>These will be the methods that the Activity will need for the OAuth 2.0 Client-Side authentication:</p>
+<pre><code>public class InstagramLogin extends Activity {
+    private String TAG = "InstagramLogin";
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+    }
+
+    private void handleAccessToken(Intent intent) {
+    }
+
+    private void redirectToMainActivity() {
+    }
+}
+</code></pre>
+<h2>5.1. onCreate method</h2>
+<p>In this method, the Activity makes the first 3 steps in the process described above.</p>
+<pre><code>    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Log.d(TAG, "onCreate");
+
+        // Try to get Access Token from SharedPreferences
+        SharedPreferences settings = PreferenceManager
+                .getDefaultSharedPreferences(getApplicationContext());
+        String auth_token_string = settings.getString(
+                getApplicationContext().getString(R.string.instagram_token),
+                "");
+
+        // Check if Access Token exists
+        if (auth_token_string.compareTo("") == 0) {
+            // Construct the Instagram Authentication URL based on the strings.xml variables
+            String instagramUrl = "https://instagram.com/oauth/authorize/?client_id=" +
+                    getApplicationContext().getString(R.string.instagram_id) +
+                    "&amp;redirect_uri=" +
+                    getApplicationContext().getString(R.string.instagram_scheme) +
+                    "%3A%2F%2Foauth%2Fcallback%2Finstagram%2F&amp;response_type=token";
+
+            // Go to the URL
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(instagramUrl));
+            startActivity(browserIntent);
+        } else {
+            redirectToMainActivity();
+        }
+    }
+</code></pre>
+<h2>5.2. onNewIntent method</h2>
+<p>This method is called when the <code>Intent</code> is created in the <code>onCreate</code> method. The new Intent will be the one that will listen to the Redirect URI from the Instagram Authentication URL Response.</p>
+<pre><code>    @Override
+    protected void onNewIntent(Intent intent) {
+        Log.d(TAG, "onNewIntent");
+        super.onNewIntent(intent);
+        handleAccessToken(intent);
+    }
+</code></pre>
+<h2>5.3. handleAccessToken method</h2>
+<p>This method gets the token from the Redirect URI and saves it in <code>SharedPreferences</code>.</p>
+<pre><code>    private void handleAccessToken(Intent intent) {
+        Log.d(TAG, "handleAccessToken");
+        Uri uri = intent.getData();
+
+        // check if the response uri starts with the custom scheme name
+        if (uri != null &amp;&amp; uri.toString().startsWith(
+                getApplicationContext().getString(R.string.instagram_scheme))) {
+            String accessToken;
+            if (uri.getFragment() != null) {
+                // gets access token and saves it in SharedPreferences
+                accessToken = uri.getFragment().replace("access_token=", "");
+                SharedPreferences settings = PreferenceManager
+                        .getDefaultSharedPreferences(getApplicationContext());
+                SharedPreferences.Editor editor = settings.edit();
+                editor.putString(getApplicationContext().getString(R.string.instagram_token),
+                        accessToken);
+                editor.apply();
+                Log.d(TAG, "Found access token: " + accessToken);
+
+                redirectToMainActivity();
+            } else {
+                Log.d(TAG, "Access token not found. URI: " + uri.toString());
+                // Handle error here
+            }
+        }
+    }
+</code></pre>
+<h2>5.4. redirectToMainActivity method</h2>
+<p>This method starts the new MainActivity and finishes the InstagramLogin Activity.</p>
+<pre><code>    private void redirectToMainActivity() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+        finish();
+    }
+</code></pre>
+<h1>6. Android Manifest</h1>
+<p>In this file, you need to add an Intent Filter to the InstagramLogin Activity. According to the <a href="http://developer.android.com/guide/components/intents-filters.html">Docs</a>, an intent filter is an expression in an app's manifest file that specifies the type of intents that the component would like to receive. For instance, by declaring an intent filter for an activity, you make it possible for other apps to directly start your activity with a certain kind of intent.</p>
+<p>With this intent filter, the InstagramLogin Activity can successfully listen to the Redirect URI from Instagram:</p>
+<pre><code>    &lt;activity
+        android:name=".main.InstagramLogin"
+        android:launchMode="singleTop" &gt;
+        &lt;intent-filter&gt;
+            &lt;action android:name="android.intent.action.MAIN" /&gt;
+            &lt;category android:name="android.intent.category.LAUNCHER" /&gt;
+        &lt;/intent-filter&gt;
+        &lt;intent-filter&gt;
+            &lt;data android:scheme="customscheme" /&gt;
+            &lt;action android:name="android.intent.action.VIEW" /&gt;
+            &lt;category android:name="android.intent.category.DEFAULT" /&gt;
+            &lt;category android:name="android.intent.category.BROWSABLE" /&gt;
+        &lt;/intent-filter&gt;
+    &lt;/activity&gt;
+    &lt;activity
+        android:name=".main.MainActivity"
+        android:label="@string/title_activity_main" &gt;
+    &lt;/activity&gt;
+</code></pre>
+    </div>
+    
+
+    
+    
+    
+  </div>
+  
+
+  
+  <footer class="entry-footer">
+    
+    <p class="entry-tags">
+      <strong>Tags</strong> :
+      <meta itemprop="keywords" content="android,instagram,oauth2.0" />
+      
+      <a href="/blog/tags/android/"
+         title="Show all entries tagged by android"
+         rel="tag" itemprop="articleSection">android</a>
+      
+      <a href="/blog/tags/instagram/"
+         title="Show all entries tagged by instagram"
+         rel="tag" itemprop="articleSection">instagram</a>
+      
+      <a href="/blog/tags/oauth2.0/"
+         title="Show all entries tagged by oauth2.0"
+         rel="tag" itemprop="articleSection">oauth2.0</a>
+      
+    </p>
+    
+    
+    <p class="entry-shorturl">
+      <strong>Short url</strong> :
+      <a href="http://example.com/blog/1/"
+         title="Short URL to Android: How-to Authenticate with OAuth 2.0 - Client-Side in Instagram"
+         rel="shortlink">
+        http://example.com/blog/1/
+      </a>
+    </p>
+    
+    
+    <p class="entry-discussions">
+      <strong>Discussions</strong> :
+      
+      
+      <meta itemprop="commentCount" content="0" />
+      <meta itemprop="discussionUrl" content="/blog/2015/08/26/android-how-authenticate-oauth-20-client-side-instagram/#comments" />
+      
+      
+      No comments yet.
+      <a href="/blog/2015/08/26/android-how-authenticate-oauth-20-client-side-instagram/#comment-form"
+         title="Leave a comment on Android: How-to Authenticate with OAuth 2.0 - Client-Side in Instagram">
+        Be first to comment!
+      </a>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    </p>
+    
+  </footer>
+  
+</article>
+
+
+
+
+<aside role="complementary" class="entry-widgets">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <div class="entry-similar">
+    <h3>Similar entries</h3>
+    
+<ul class="no-entries-similar">
+  
+  <li>
+    No similar entries.
+  </li>
+  
+</ul>
+
+  </div>
+  
+</aside>
+
+
+
+<section id="pingbacks">
+  <h3>Pingbacks</h3>
+  
+  
+  
+  <p>Pingbacks are open.</p>
+  
+  
+</section>
+
+
+
+
+<section id="trackbacks">
+  <h3>Trackbacks</h3>
+  
+  
+  
+  <p>
+    <a href="/blog/trackback/1/" rel="trackback">
+      Trackback URL</a>
+  </p>
+  
+  
+</section>
+
+
+
+
+<section id="comments">
+  <h3>Comments</h3>
+  
+    
+  <p>No comments yet.</p>
+    
+  
+</section>
+
+
+
+
+  
+
+<form action="/comments/post/" method="post" id="comment-form">
+  <div><input type='hidden' name='csrfmiddlewaretoken' value='tJW8oBAzesUx2DmWyvkS55AbDLIwTEo9' /></div>
+  
+  <fieldset>
+    <legend>Post your comment</legend>
+    <input type="hidden" name="next" value="/blog/comments/success/"/>
+    
+    <input id="id_content_type" name="content_type" type="hidden" value="zinnia.entry" />
+    
+    <input id="id_object_pk" name="object_pk" type="hidden" value="1" />
+    
+    <input id="id_timestamp" name="timestamp" type="hidden" value="1440629004" />
+    
+    <input id="id_security_hash" maxlength="40" name="security_hash" type="hidden" value="8bcbd5c13d90154031442c446b7877cf6621cc1f" />
+    
+    
+    
+    <div>
+      <label for="id_name">Name:</label>
+      
+      <input id="id_name" maxlength="50" name="name" type="text" />
+    </div>
+    
+    
+    
+    
+    
+    <div>
+      <label for="id_email">Email address:</label>
+      
+      <input id="id_email" name="email" type="email" />
+    </div>
+    
+    
+    
+    
+    
+    <div>
+      <label for="id_url">URL:</label>
+      
+      <input id="id_url" name="url" type="url" />
+    </div>
+    
+    
+    
+    
+    
+    <div>
+      <label for="id_comment">Comment:</label>
+      
+      <textarea cols="40" id="id_comment" maxlength="3000" name="comment" rows="10">
+</textarea>
+    </div>
+    
+    
+    
+    
+    
+    <div style="display:none;">
+      <label for="id_honeypot">If you enter anything in this field your comment will be treated as spam:</label>
+      
+      <input id="id_honeypot" name="honeypot" type="text" />
+    </div>
+    
+    
+    
+    
+    <p class="submit">
+      <input type="submit" name="submit" class="submit-post" value="Post" />
+      <input type="submit" name="preview" class="submit-preview" value="Preview" />
+    </p>
+  </fieldset>
+</form>
+
+
+
+
+
+      </div>
+      <div id="sidebar" role="complementary">
+        
+<aside id="widget-welcome" class="widget">
+  <h3>Welcome!</h3>
+  <p>
+    This simple theme is the default appearance of Zinnia.
+  </p>
+  <p>
+    Don't hesitate to override the template <strong>zinnia/base.html</strong> to start <a href='http://docs.django-blog-zinnia.com/en/latest/how-to/customize_look_and_feel.html'>customizing your Weblog</a>.
+  </p>
+</aside>
+<aside id="widget-categories" class="widget">
+  <h3>
+    <a href="/blog/categories/">Categories</a>
+  </h3>
+  
+<ul class="categories">
+  
+  <li>
+    <a href="/blog/categories/android/"
+       title="Show all entries in Android">Android</a>
+    1 entry
+  </li>
+  
+</ul>
+
+
+</aside>
+<aside id="widget-authors" class="widget">
+  <h3>
+    <a href="/blog/authors/">Authors</a>
+  </h3>
+  
+<ul class="authors">
+  
+  <li class="vcard">
+    <a href="/blog/authors/dmunoz/"
+       title="Show all dmunoz's entries"
+       class="fn url nickname">dmunoz</a>
+    1 entry
+  </li>
+  
+</ul>
+
+</aside>
+<aside id="widget-calendar" class="widget">
+  <h3>Calendar</h3>
+  <table class="entries-calendar">
+<caption>August 2015</caption>
+<thead><tr><th class="sun">Sun</th><th class="mon">Mon</th><th class="tue">Tue</th><th class="wed">Wed</th><th class="thu">Thu</th><th class="fri">Fri</th><th class="sat">Sat</th></tr></thead>
+<tfoot><tr><td colspan="3" class="prev">&nbsp;</td><td class="pad">&nbsp;</td><td colspan="3" class="next">&nbsp;</td></tr></tfoot>
+<tbody>
+<tr><td class="noday">&nbsp;</td><td class="noday">&nbsp;</td><td class="noday">&nbsp;</td><td class="noday">&nbsp;</td><td class="noday">&nbsp;</td><td class="noday">&nbsp;</td><td class="sat">1</td></tr>
+<tr><td class="sun">2</td><td class="mon">3</td><td class="tue">4</td><td class="wed">5</td><td class="thu">6</td><td class="fri">7</td><td class="sat">8</td></tr>
+<tr><td class="sun">9</td><td class="mon">10</td><td class="tue">11</td><td class="wed">12</td><td class="thu">13</td><td class="fri">14</td><td class="sat">15</td></tr>
+<tr><td class="sun">16</td><td class="mon">17</td><td class="tue">18</td><td class="wed">19</td><td class="thu">20</td><td class="fri">21</td><td class="sat">22</td></tr>
+<tr><td class="sun">23</td><td class="mon">24</td><td class="tue">25</td><td class="wed entry"><a href="/blog/2015/08/26/" class="archives">26</a></td><td class="thu">27</td><td class="fri">28</td><td class="sat">29</td></tr>
+<tr><td class="sun">30</td><td class="mon">31</td><td class="noday">&nbsp;</td><td class="noday">&nbsp;</td><td class="noday">&nbsp;</td><td class="noday">&nbsp;</td><td class="noday">&nbsp;</td></tr>
+</tbody>
+</table>
+
+
+</aside>
+<aside id="widget-tags" class="widget">
+  <h3>
+    <a href="/blog/tags/">Tags</a>
+  </h3>
+  
+<ul class="tag-cloud">
+  
+  <li>
+    <a href="/blog/tags/android/"
+       title="1 entry tagged by android"
+       class="tag-1">android</a>
+  </li>
+  
+  <li>
+    <a href="/blog/tags/instagram/"
+       title="1 entry tagged by instagram"
+       class="tag-1">instagram</a>
+  </li>
+  
+  <li>
+    <a href="/blog/tags/oauth2.0/"
+       title="1 entry tagged by oauth2.0"
+       class="tag-1">oauth2.0</a>
+  </li>
+  
+</ul>
+
+</aside>
+<aside id="widget-recents" class="widget">
+  <h3>Recent entries</h3>
+  
+<ul class="entries-recent">
+  
+  <li>
+    <a href="/blog/2015/08/26/android-how-authenticate-oauth-20-client-side-instagram/" title="Android: How-to Authenticate with OAuth 2.0 - Client-Side in Instagram" rel="bookmark">Android: How-to Authenticate with OAuth 2.0 - Client-Side in Instagram</a>
+  </li>
+  
+</ul>
+
+</aside>
+<aside id="widget-comments" class="widget">
+  <h3>Recent comments</h3>
+  
+<ul class="no-comments-recent">
+  
+  <li>
+    No comments yet.
+  </li>
+  
+</ul>
+
+</aside>
+<aside id="widget-linkbacks" class="widget">
+  <h3>Recent linkbacks</h3>
+  
+<ul class="no-linkbacks-recent">
+  
+  <li>
+    No linkbacks yet.
+  </li>
+  
+</ul>
+
+</aside>
+<aside id="widget-randoms" class="widget">
+  <h3>Random entries</h3>
+  
+<ul class="entries-random">
+  
+  <li>
+    <a href="/blog/2015/08/26/android-how-authenticate-oauth-20-client-side-instagram/" title="Android: How-to Authenticate with OAuth 2.0 - Client-Side in Instagram" rel="bookmark">Android: How-to Authenticate with OAuth 2.0 - Client-Side in Instagram</a>
+  </li>
+  
+</ul>
+
+</aside>
+<aside id="widget-populars" class="widget">
+  <h3>Popular entries</h3>
+  
+<ul class="no-entries-popular">
+  
+  <li>
+    No entries yet.
+  </li>
+  
+</ul>
+
+</aside>
+<aside id="widget-archives" class="widget">
+  <h3>Archives</h3>
+  
+
+<ul class="archives-entries-tree">
+  
+  <li>
+    <a title="Archives 2015" rel="archives"
+       href="/blog/2015/">2015</a>
+    
+    <ul>
+      
+      <li>
+        
+        <a title="Archives August 2015" rel="archives"
+           href="/blog/2015/08/">
+          August
+        </a>
+        
+        
+        <ul>
+          
+          <li>
+            
+            <a title="Archives Aug. 26, 2015" rel="archives"
+               href="/blog/2015/08/26/">
+              August 26
+            </a>
+            
+          </li>
+          
+        </ul>
+      </li>
+      
+    </ul>
+  </li>
+  
+</ul>
+
+</aside>
+
+
+      </div>
+      <footer id="footer" role="contentinfo">
+        <p>Powered by <a href="http://www.djangoproject.com">Django</a> and <a href="https://github.com/Fantomas42/django-blog-zinnia">Zinnia 0.15.2</a>.</p>
+      </footer>
+    </div>
+  </body>
+</html>
