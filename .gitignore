@@ -1,6 +1,5 @@
 *.pid
 *.pyc
 *.swp
-*.db
 _output/
 themes/

@@ -1,7 +1,7 @@
 I assume that you have an Android application currently working, and that your main class is called `MainActivity`. These are the steps to follow:
 
-1. Create an Instagram account
-2. [Register you application](https://instagram.com/developer/)
+### 1. Create an Instagram account
+### 2. [Register you application](https://instagram.com/developer/)
 
 # 3. Register a New Client
 
