@@ -25,9 +25,9 @@ def gen():
 def update_files():
     local('git checkout gh-pages')
     local('rm *.html')
-    local('rm -r escala-de-notas')
-    local('rm -r site_media')
-    local('rm -r blog')
+    local('rm -rf escala-de-notas')
+    local('rm -rf site_media')
+    local('rm -rf blog')
     local('git checkout master -- _output')
     local('mv _output/* .')
     local('rm -r _output')
