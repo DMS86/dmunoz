@@ -94,7 +94,6 @@ TEMPLATE_CONTEXT_PROCESSORS = [
     "django.core.context_processors.request",
     "django.contrib.messages.context_processors.messages",
     "pinax_theme_bootstrap.context_processors.theme",
-    'zinnia.context_processors.version',
 ]
 
 
@@ -132,11 +131,6 @@ INSTALLED_APPS = [
 
     # external
     'django_medusa',
-    'django_comments',
-    'mptt',
-    'tagging',
-    'zinnia_bootstrap',
-    'zinnia',
 
     # project
     "website",
@@ -183,5 +177,3 @@ PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 MEDUSA_DEPLOY_DIR = os.path.join(
     PROJECT_DIR, '..', "_output"
 )
-
-ZINNIA_MARKUP_LANGUAGE = 'markdown'
