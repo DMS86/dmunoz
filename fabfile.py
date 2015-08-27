@@ -15,8 +15,8 @@ def restart(branch=None):
 def gen():
     local('python manage.py staticsitegen')
     local('python manage.py collectstatic --noinput')
-    local('git add .')
     try:
+        local('git add .')
         local("git commit -m 'update html'")
     except:
         pass
@@ -34,8 +34,11 @@ def update_files():
     local('mv website/site_media .')
     local('rm -r website')
     local('git add --all')
-    local("git commit -m 'website update'")
-    local('git push origin gh-pages')
+    try:
+        local("git commit -m 'website update'")
+        local('git push origin gh-pages')
+    except:
+        pass
     local('git checkout master')
 
 def deploy():

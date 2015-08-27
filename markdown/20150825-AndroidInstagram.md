@@ -1,3 +1,5 @@
+How to add Instagram Client-side Authentication to your Android Application
+
 I assume that you have an Android application currently working, and that your main class is called `MainActivity`. These are the steps to follow:
 
 ### 1. Create an Instagram account
