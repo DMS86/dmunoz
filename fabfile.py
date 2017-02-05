@@ -26,6 +26,7 @@ def update_files():
     local('git checkout gh-pages')
     local('rm *.html')
     local('rm -rf escala-de-notas')
+    local('rm -rf postparental-transition')
     local('rm -rf site_media')
     local('rm -rf blog')
     local('git checkout master -- _output')

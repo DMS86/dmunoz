@@ -36,6 +36,7 @@ h4 {
 
 
 p {
+    font-size: 17px;
     font-weight:300;
     line-height:30px;
     padding-bottom:15px;
@@ -46,6 +47,7 @@ section {
     padding-bottom:30px;
 }
 .g-pad-bottom {
+    font-size: 17px;
     padding-bottom:30px;
 }
 
@@ -173,12 +175,18 @@ padding: 5px;
 
 #carousel-example {
     margin:20px;
-
+}
+.item {
+    font-size: 18px;
 }
 .slide-custom {
     min-height:200px;
     padding:20px;
     line-height:30px;
+}
+
+.slide-custom h4 {
+    font-size: 20px;
 }
 
 .user-img {
@@ -212,6 +220,7 @@ display: block;
 height: auto;
    min-height:200px;
     color:#fff;
+    opacity: 0.9;
 }
 /* ===========================================================
    PRICING STYLE   
