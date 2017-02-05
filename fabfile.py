@@ -24,10 +24,22 @@ def gen():
 
 def update_files():
     local('git checkout gh-pages')
-    local('rm *.html')
-    local('rm -r escala-de-notas')
-    local('rm -r postparental-transition')
-    local('rm -r site_media')
+    try:
+        local('rm *.html')
+    except:
+        pass
+    try:
+        local('rm -r escala-de-notas')
+    except:
+        pass
+    try:
+        local('rm -r postparental-transition')
+    except:
+        pass
+    try:
+        local('rm -r site_media')
+    except:
+        pass
     local('git checkout master -- _output')
     local('mv _output/* .')
     local('rm -r _output')
