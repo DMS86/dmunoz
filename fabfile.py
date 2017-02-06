@@ -37,6 +37,10 @@ def update_files():
     except:
         pass
     try:
+        local('rm -r transition')
+    except:
+        pass
+    try:
         local('rm -r site_media')
     except:
         pass
