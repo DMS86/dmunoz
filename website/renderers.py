@@ -6,6 +6,7 @@ class HomeRenderer(StaticSiteRenderer):
         return frozenset([
             "/",
             "/escala-de-notas/",
+            "/transition/",
         ])
 
 renderers = [HomeRenderer, ]
