@@ -1,3 +1,5 @@
+Used to be a pinax project for my website, now it's a repo for static files for personal website that I use with Tumblr
+
 pinax-project-zero
 ==================
 
